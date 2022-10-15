@@ -17,11 +17,7 @@ import ViewImageScreen from "./src/screens/ViewImageScreen";
 import MessagesScreen from "./src/screens/MessagesScreen";
 
 export default function App() {
-  return (
-    <SafeAreaView>
-      <MessagesScreen />
-    </SafeAreaView>
-  );
+  return <MessagesScreen />;
 }
 
 const styles = StyleSheet.create({
