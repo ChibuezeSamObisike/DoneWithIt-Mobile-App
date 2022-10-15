@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 
 import Screen from "../components/Screen";
@@ -6,8 +6,9 @@ import Screen from "../components/Screen";
 import ListItem from "../components/ListItem";
 import colors from "../config/colors";
 import ListItemSeperator from "./ListItemSeperator";
+import ListItemDeleteAction from "../components/ListItemDeleteAction";
 
-const messages = [
+const initialMessages = [
   {
     id: 1,
     title: "T1",
@@ -23,9 +24,28 @@ const messages = [
 ];
 
 const MessagesScreen = () => {
+  const [messages, setMessages] = useState(initialMessages);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleDelete = (msg) => {
+    const newMsg = messages.filter((x) => x !== msg);
+    setMessages(newMsg);
+  };
+
   return (
     <Screen>
       <FlatList
+        refreshing={refreshing}
+        onRefresh={() => {
+          setMessages([
+            {
+              id: 2,
+              title: "T2",
+              description: "D2",
+              image: require("../assets/mosh.jpg"),
+            },
+          ]);
+        }}
         data={messages}
         keyExtractor={(message) => message.id || Math.random()}
         renderItem={({ item }) => (
@@ -33,6 +53,9 @@ const MessagesScreen = () => {
             title={item.title}
             subTitle={item.description}
             image={item.image}
+            renderRightActions={() => (
+              <ListItemDeleteAction onPress={() => handleDelete(item)} />
+            )}
             onPress={() => console.log("Message selected", item)}
           />
         )}

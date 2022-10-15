@@ -7,17 +7,17 @@ import {
   Text,
   View,
 } from "react-native";
-import AppText from "./src/components/AppText";
-import AppButton from "./src/components/AppButton";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import WelcomeScreen from "./src/screens/WelcomeScreen";
-import Card from "./src/components/Card";
-import ListingDetailsScreen from "./src/screens/ListingDetailsScreen";
-import ViewImageScreen from "./src/screens/ViewImageScreen";
-import MessagesScreen from "./src/screens/MessagesScreen";
+
+import Screen from "./src/components/Screen";
+import Icon from "./src/components/Icon";
+import ListItem from "./src/components/ListItem";
 
 export default function App() {
-  return <MessagesScreen />;
+  return (
+    <Screen>
+      <ListItem title='My title' subTitle='My Subtitle' />
+    </Screen>
+  );
 }
 
 const styles = StyleSheet.create({
