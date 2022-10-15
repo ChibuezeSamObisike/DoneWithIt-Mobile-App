@@ -12,24 +12,14 @@ import AppButton from "./src/components/AppButton";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
 import Card from "./src/components/Card";
+import ListingDetailsScreen from "./src/screens/ListingDetailsScreen";
+import ViewImageScreen from "./src/screens/ViewImageScreen";
+import MessagesScreen from "./src/screens/MessagesScreen";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          backgroundColor: "#f8f4f4",
-          padding: 20,
-          paddingTop: 100,
-          width: "100%",
-        }}
-      >
-        <Card
-          title='Jacket'
-          subTitle='$100'
-          image={require("./src/assets/jacket.jpg")}
-        />
-      </View>
+    <SafeAreaView>
+      <MessagesScreen />
     </SafeAreaView>
   );
 }
@@ -37,9 +27,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    //backgroundColor: "#fff",
+    // alignItems: "center",
+    // justifyContent: "center",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : "0%",
   },
 });
