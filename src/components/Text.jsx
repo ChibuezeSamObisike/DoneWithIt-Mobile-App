@@ -4,8 +4,12 @@ import { Text, StyleSheet } from "react-native";
 
 import defaultStyles from "../config/styles";
 
-const AppText = ({ children, style }) => {
-  return <Text style={[defaultStyles.text, style]}>{children}</Text>;
+const AppText = ({ children, style, ...rest }) => {
+  return (
+    <Text {...rest} style={[defaultStyles.text, style]}>
+      {children}
+    </Text>
+  );
 };
 
 //const styles = StyleSheet.create({});

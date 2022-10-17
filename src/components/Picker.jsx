@@ -15,7 +15,7 @@ import colors from "../config/colors";
 import Screen from "./Screen";
 
 import defaultStyles from "../config/styles";
-import AppText from "./AppText";
+import AppText from "./Text";
 import PickerItem from "./PickerItem";
 
 const AppPicker = ({
@@ -24,12 +24,15 @@ const AppPicker = ({
   placeholder,
   onSelectItem,
   selectedItem,
+  PickerItemComponent = PickerItem,
+  numberOfColumns = 1,
+  width = "100%",
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               style={styles.icon}
@@ -38,9 +41,12 @@ const AppPicker = ({
               color={colors.medium}
             />
           )}
-          <AppText style={styles.text}>
-            {selectedItem?.label ?? placeholder}
-          </AppText>
+          {selectedItem ? (
+            <AppText style={styles.text}>{selectedItem.label}</AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
+          )}
+
           <MaterialCommunityIcons
             name='chevron-down'
             size={20}
@@ -55,10 +61,11 @@ const AppPicker = ({
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
+            numColumns={numberOfColumns}
             renderItem={({ item }) => {
               return (
-                <PickerItem
-                  label={item.label}
+                <PickerItemComponent
+                  item={item}
                   onPress={() => {
                     setModalVisible(false);
                     onSelectItem(item);
@@ -78,7 +85,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light,
     borderRadius: 25,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
     alignItems: "center",
@@ -89,6 +95,10 @@ const styles = StyleSheet.create({
 
   icon: {
     marginRight: 10,
+  },
+  placeholder: {
+    color: colors.medium,
+    flex: 1,
   },
 });
 

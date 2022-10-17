@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 import colors from "../config/colors";
-import AppText from "./AppText";
+import AppText from "./Text";
 
 const Card = ({ image, title, subTitle }) => {
   return (

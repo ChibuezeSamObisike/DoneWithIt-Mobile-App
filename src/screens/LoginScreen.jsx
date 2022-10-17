@@ -4,11 +4,7 @@ import Screen from "../components/Screen";
 
 import * as Yup from "yup";
 
-import { Formik } from "formik";
-import AppFormField from "../components/AppFormField";
-import SubmitButton from "../components/SubmitButton";
-
-import AppForm from "../components/AppForm";
+import { AppFormField, SubmitButton, AppForm } from "../components/forms";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
