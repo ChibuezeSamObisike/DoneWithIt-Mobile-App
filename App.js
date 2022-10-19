@@ -28,15 +28,12 @@ const categories = [
 export default function App() {
   const [firstName, setFirstName] = useState("");
   const [category, setCategory] = useState(categories[0]);
-  return <ListingEdit />;
+  return <ListingScreen />;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : "0%",
   },
 });
