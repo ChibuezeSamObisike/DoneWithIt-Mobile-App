@@ -25,8 +25,9 @@ const ImageInput = ({ imageUri, onChangeImage }) => {
     }
   };
   const handlePress = () => {
-    if (!imageUri) selectImage();
-    else
+    if (!imageUri) {
+      selectImage();
+    } else {
       Alert.alert("Delete", "Are you sure you want to delete", [
         {
           text: "Yes",
@@ -36,6 +37,7 @@ const ImageInput = ({ imageUri, onChangeImage }) => {
           text: "No",
         },
       ]);
+    }
   };
   const requestPermission = async () => {
     const result = await ImagePicker.requestCameraPermissionsAsync();
