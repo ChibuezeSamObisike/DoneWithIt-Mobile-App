@@ -7,34 +7,12 @@ import ImageInput from "./src/components/ImageInput";
 export default function App() {
   const [imageUri, setImageUri] = useState();
 
-  const requestPermission = async () => {
-    const result = await ImagePicker.requestCameraPermissionsAsync();
-    if (!result.granted) {
-      alert("You need to enable permission");
-    }
-  };
-  useEffect(() => {
-    requestPermission();
-  }, []);
-
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.cancelled) {
-        setImageUri(result.uri);
-      }
-    } catch (error) {
-      console.log("Error reading an image");
-    }
-  };
   return (
     <Screen>
-      <Button title='Select Image' onPress={selectImage} />
-      <Image
-        source={{ uri: imageUri }}
-        style={{ width: "130%", height: 400 }}
+      <ImageInput
+        imageUri={imageUri}
+        onChangeImage={(uri) => setImageUri(uri)}
       />
-      <ImageInput imageUri={imageUri} />
     </Screen>
   );
 }
