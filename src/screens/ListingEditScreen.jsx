@@ -9,9 +9,12 @@ import {
   SubmitButton,
 } from "../components/forms";
 
+import FormImagePicker from "../components/forms/FormImagePicker";
+
 import Screen from "../components/Screen";
 
 import CategoryPickerItem from "../components/CategoryPickerItem";
+import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   category: Yup.object().required().nullable().label("Category"),
@@ -59,6 +62,7 @@ const categories = [
 ];
 
 const ListingEditScreen = () => {
+  const location = useLocation();
   return (
     <Screen style={styles.container}>
       <Form
@@ -70,11 +74,11 @@ const ListingEditScreen = () => {
           title: "",
         }}
         onSubmit={() => {
-          console.log("Submiting...");
+          console.log("Submiting...", location);
         }}
         validationSchema={validationSchema}
       >
-        {/* <FormImagePicker name='images' /> */}
+        <FormImagePicker name='images' />
         <FormField
           autoCapitalize='sentences'
           autoCorrect
