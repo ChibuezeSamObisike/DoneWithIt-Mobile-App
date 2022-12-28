@@ -20,13 +20,14 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
+    targetScreen: "Messages",
   },
 ];
 
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
   return (
     <Screen style={styles.screen}>
-      <View style={styles.container}>
+      <View style={{ marginBottom: 30, backgroundColor: "red" }}>
         <ListItem
           title='Chibueze hamedani'
           subTitle='Programming with mosh'
@@ -48,6 +49,9 @@ const AccountScreen = () => {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={() => {
+                navigation.navigate(item.targetScreen);
+              }}
             />
           )}
         />

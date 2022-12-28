@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     backgroundColor: colors.white,
-    flex: 1,
   },
   title: {
     fontWeight: "500",
