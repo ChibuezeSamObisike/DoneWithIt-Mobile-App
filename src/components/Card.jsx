@@ -8,11 +8,11 @@ import {
 import colors from "../config/colors";
 import AppText from "./Text";
 
-const Card = ({ image, title, subTitle, onPress }) => {
+const Card = ({ imageUrl, title, subTitle, onPress }) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
-        <Image source={image} style={styles.image} />
+        <Image source={{ uri: imageUrl }} style={styles.image} />
         <View style={styles.detailsContainer}>
           <AppText style={{ marginBottom: 7 }}>{title}</AppText>
           <AppText style={{ color: colors.secondary, fontWeight: "bold" }}>
