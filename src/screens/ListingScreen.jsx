@@ -28,7 +28,7 @@ const ListingScreen = ({ navigation }) => {
   const [listings, setListings] = useState([]);
 
   const loadListings = async () => {
-    const response = listingsApi.getListings();
+    const response = await listingsApi.getListings();
     console.log("Api Response", response);
     setListings(response?.data);
   };
